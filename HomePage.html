@@ -1,0 +1,194 @@
+<html>
+    <head>
+      
+      <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+        <link rel="stylesheet" href="homepage.css" media="screen" type="text/css" />
+
+        <link rel="stylesheet" href="script.js"  type="text/js" />
+        
+       
+        
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    </head>
+    <body>
+        <div id="top-rectangle">
+            <h3 id="H3"> user name:</h3>
+          <span id="user-email" > </span>
+            <a  class="logout" id="logout" href="./login.html">Log out</a>
+        </div>
+        
+        
+        
+        <div class="container">
+          
+            <div class="flex_c" >
+              
+              <p id="date"><B>Today : </B> <span id='date-time'></span>.</p>
+
+
+              <h1 class="head">ToDo List<i class="fas fa-clipboard-list headIcon"></i></h1>
+              <input type="text" id="input" placeholder="enter your task">
+              
+                <p id="emptyInput"></p>
+              <button id="submit" onclick="addItem()">add task</button>
+              
+              <div id="result"></div>
+              
+              <span class="taa"></span>
+              <button id="rmvbtn">delete selected<i class="fas fa-trash-alt"></i></button>
+
+            </div>
+          </div>
+          <div class="chatBot" id="messenger">
+            <img id="chatbot-icon" src="chatbot.gif" >
+            <div id="chatbot-container" style="display:none;"></div>
+            
+            <div class="Message"><B><span id='Time'></span></B>
+              <div class="nbTasks">
+              <p id="counter">you have no tasks</p>
+             
+             </div>
+            </div>
+
+          </div>
+          <script src= "firebase.js"></script>
+          <script src="script.js"></script>
+    </body>
+
+    
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+      import {getDatabase, ref,push, set } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
+      import { getAuth, onAuthStateChanged , signInWithEmailAndPassword ,signOut} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+    apiKey: "AIzaSyDNTq6_TlzfBcqoI3sXnNGogjoRdg02YKA",
+    authDomain: "tasks-7716f.firebaseapp.com",
+    projectId: "tasks-7716f",
+    storageBucket: "tasks-7716f.appspot.com",
+    messagingSenderId: "568639499316",
+    appId: "1:568639499316:web:44a8e18eccc882d4a7ee61",
+    measurementId: "G-RVRLT6QZBX"
+  };
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      const auth = getAuth(app);
+      const db = getDatabase(app);
+
+  document.getElementById("logout").addEventListener('click',(e)=>{
+              signOut(auth).then(() => {
+              //
+              alert("signout succcesfull ");
+               }).catch((error) => {
+                  const errorCode = error.code;
+                  const errorMessage = error.message;
+                  alert(errorMessage);
+               });
+           });
+          ///////USER//////
+    
+
+     	
+          
+
+var usee="";
+auth.onAuthStateChanged((user) => {
+	if (user) {
+		
+		usee=user.email;
+    var name = createSequence(user.email);
+	  document.getElementById("user-email").innerHTML=name;
+	} else {
+		console.log("error");
+	}
+  });
+
+function createSequence(text) {
+  let sequence = "";
+  for (let i = 0; i < text.length; i++) {
+    if (text[i] === "@") {
+      break;
+    }
+    sequence += text[i];
+  }
+  return sequence;
+}
+
+
+
+
+//////////TODOLOIST /////////////
+
+let chooseDateButton = document.getElementById("choose-date-button");
+let taskDateInput = document.getElementById("task-date");
+
+let dt = new Date();
+
+let dateString = dt.toString();
+let shortDate = dateString.substring(0, 15);
+let Time = dateString.substring(16, 25);
+document.getElementById('date-time').innerHTML=shortDate;
+/*chooseDateButton.addEventListener("click", function() {
+  taskDateInput.style.display = "block";
+  console.log(shortDate);
+});
+*/
+var count = document.getElementById("counter").innerHTML;
+let message = new String('');
+// let message2 = new String('');
+// message2=("\nyou have NO Tasks  to complete");
+if(Time.substring(0, 2)>=18 ||Time.substring(0, 2)<=5  ){
+  
+  message ="Good Evening  \n" ;
+
+  
+}else{if(Time.substring(0, 2)>=5 ||Time.substring(0, 2)<=12  ){
+  
+  message ="Good Morning Sir \n"   ;
+}
+  else{
+    message ="Good afternoon Sir \n";
+  }
+}
+
+document.getElementById('Time').innerHTML=message;
+
+
+/////////CHATBOT////////
+
+
+
+const chatbotIcon = document.getElementById("chatbot-icon");
+const chatbotContainer = document.getElementById("chatbot-container");
+
+
+chatbotIcon.addEventListener("click", function() {
+  if (chatbotContainer.style.display === "none") {
+    chatbotContainer.style.display = "block";
+    chatbotContainer.innerHTML = message;
+    
+    
+  } else {
+    chatbotContainer.style.display = "none";
+  }
+});
+ 
+
+/////////////////////TEST//////////////////
+
+
+
+
+     </script>
+</html>

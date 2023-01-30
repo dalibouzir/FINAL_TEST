@@ -1,0 +1,260 @@
+#top-rectangle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  border: 0px solid rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+}
+
+
+.logout{
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+.logout{position: absolute;
+  top: 3;
+  right: 10;
+color:white;}
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Quicksand', 'Baloo Bhaijaan';
+}
+
+.head {
+  color: rgb(0, 0, 0);
+  margin: 1em auto;
+
+}
+.container {
+ 
+  margin-top: 44px;
+  display: flex;
+  justify-content: center;
+  
+}
+.flex_c {
+  
+  border-radius: 20px;
+  background: #e0e0e0;
+  box-shadow:  71px 71px 100px #a8a8a8,
+           -1px -7px 12px #3e3e3e;
+  width:100%;
+  padding: 15px;
+  
+  margin-top:6%;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  position: relative
+}
+#submit {
+  font-family: 'Quicksand', 'Baloo Bhaijaan';
+  margin: .3em 0;
+  border: none;
+  background: rgba(56, 56, 56, 0.5);
+  display: block;
+  width: 100%;
+  padding: 0.5em 1em;
+  color: rgb(0, 0, 0);
+  font: bold 15px;border-radius: 3px
+}
+.headIcon {
+  margin: 0 0.7em
+}
+input[type="text"] {
+  background: rgba(159, 159, 159, 0.5);
+  border: none;
+  font-family: 'Quicksand', 'Baloo Bhaijaan';
+  padding: 1em;border-radius: 3px;outline:none;
+}
+  ::placeholder {
+color:#332c63
+}
+.trashIcon , .doneIcon, .importantIcon,.notImportantIcon {
+  
+cursor: pointer;
+padding: 0.2em }
+.trashIcon{color: rgba(0,0,0,0.4);}
+.doneIcon{color:rgba(0, 0, 0, 0.3);}
+.trashIcon:hover{color:rgba(0,0,0,0.6);transition: 0.2s
+}.doneIcon:hover{color:rgba(0, 0, 0, 0.6)}
+.importantIcon{color:rgba(0, 0, 0, 0.7);}
+.notImportantIcon{color:rgba(0, 0, 0, 0.4);}
+.notImportantIcon:hover{color:rgba(0, 0, 0, 0.7);}
+
+
+
+
+
+
+
+.tasks {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.5em;border-radius: 3px;color:rgb(0, 0, 0);
+white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  
+}
+.options{    position: absolute;right: 1em;
+}
+
+
+
+
+.checkIcon, .uncheckIcon{
+margin: 0 0.4em;
+}
+
+#rmvbtn{
+
+background: rgba(0, 0, 0, 0.09);text-align: center;padding: 0.3em;border-radius: 3px;color:rgba(0, 0, 0, 0.5);cursor: pointer;border: none;
+
+
+
+
+}#rmvbtn:hover{color:rgb(0, 0, 0);transition: 0.4s;}
+#rmvbtn i{margin-left: 1em}
+
+#emptyInput{display: none}
+
+#task-date {
+      
+  
+      display: none;
+      align-items: center;
+    
+}
+#choose-date-button{
+  color: rgb(0, 0, 0);
+      background-color: rgba(255,255,255,.5);
+     
+      align-items: center;
+}
+#submit:hover{
+  background-color: rgb(255, 255, 255);
+  color: #000000;
+  border: 2px solid #000000;
+  font-weight: bold;
+}
+#date{
+  
+  margin-right: 0px;
+  color:rgb(0, 0, 0);
+  font-size: 20px;
+
+  padding: 12px 16px 0px;
+}
+.message{
+  width: 234.2px;
+  height: 600px;
+  position: absolute;
+  margin-top: 0;
+  left: 0;
+
+
+}
+#Time{
+  text-align: center;
+  font-size: 1.2em; 
+  color :rgba(0, 0, 0, 0.5);
+
+}
+#counter{
+  font-weight: bold;
+  font-size: 1em; 
+  width: 234.2px;
+  color :rgba(0, 0, 0, 0.5);
+}
+#edit{
+  color:#3e3e3e;
+}
+#edit:hove{
+  color:#000000;
+}
+#messenger{
+  height: 0cm;
+
+  position: fixed;
+  bottom: 0;
+  right: 0;
+
+}
+#chatbot-icon{
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+  font-size: 18px;
+  
+
+}
+#chatbot-container {
+  position: absolute;
+  right: 2px;
+  bottom: 50px;
+  border-radius: 1px;
+  background: #e0e0e0;
+  box-shadow:  10px 10px 23px #a1a1a1,
+             -10px -10px 23px #ffffff;
+ 
+  padding: 10px;
+  
+  
+  width: 150px;
+  height: 80px;
+}
+#user-email{
+  position: absolute;
+  font-weight: bold;
+  top: 17;
+  left: 90;
+color:#818181;
+  
+}
+#H3{
+  position: absolute;
+  
+  top: -4;
+  left: 0;
+color:white;
+  
+}
+#h4{
+
+  position: relative;
+  font-weight: bold;
+  font-size:14px;
+  top:7;
+
+
+    
+}
+
+#delall{
+  position: relative;
+  text-decoration: underline; 
+  float : right;
+ margin-left: auto;
+ bottom:2px;
+  font-weight: bold;
+    background-color: #e0e0e0;
+    color: rgb(0, 0, 0);
+    padding: 1px px;
+    margin: 8px 0;
+    border: white;
+    cursor: pointer;
+    
+   
+}
+
+#layer{
+  height: 45px;
+  width: 100%;
+}
