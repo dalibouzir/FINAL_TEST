@@ -70,7 +70,7 @@ function addItem() {
 
 		let text = document.getElementById("input");
 		//console.log(text.value);
-		db.collection("do-item").add({
+		db.collection("todo").add({
 			text : tasktag.innerText,
 			status : "active",
 		    user : usee
@@ -264,7 +264,7 @@ pTag.appendChild(taskcheck);
 					if(item.user==usee){
 
 						if(item.text==tasktag.innerText){
-							const docRef = db.collection("do-item").doc(item.id);
+							const docRef = db.collection("todo").doc(item.id);
 							docRef.update({
 								status:"done"
 							
@@ -282,7 +282,7 @@ pTag.appendChild(taskcheck);
 					if(item.user==usee){
 
 						if(item.text==tasktag.innerText){
-							const docRef = db.collection("do-item").doc(item.id);
+							const docRef = db.collection("todo").doc(item.id);
 							docRef.update({
 								status:"active"
 							
@@ -306,7 +306,7 @@ pTag.appendChild(taskcheck);
 				if(item.user==usee){
 
 					if(item.text==tasktag.innerText){
-						const docRef = db.collection("do-item").doc(item.id);
+						const docRef = db.collection("todo").doc(item.id);
 						docRef.delete();
 					}
 				}})
@@ -376,7 +376,7 @@ auth.onAuthStateChanged((user) => {
 
 
  function getitems(){
-	db.collection("do-item").onSnapshot((snapshot)=>{
+	db.collection("todo").onSnapshot((snapshot)=>{
 		let items= [];
 		//console.log(snapshot);
 		snapshot.docs.forEach((doc)=>{
@@ -432,7 +432,7 @@ auth.onAuthStateChanged((user) => {
 	if(item.user==usee){
 
 
-const docRef = db.collection("do-item").doc(item.id);
+const docRef = db.collection("todo").doc(item.id);
 
 docRef.delete().then(function() {
 	console.log("Document successfully deleted!");
@@ -446,7 +446,7 @@ docRef.delete().then(function() {
 	if(item.user==usee){
 
 
-const docRef = db.collection("do-item").doc(item.id);
+const docRef = db.collection("todo").doc(item.id);
 var input = prompt("edit tasks");
 docRef.update({
 	text:input
@@ -476,7 +476,7 @@ docRef.update({
 // 			if(item.user==usee){
 // 				console.log(item.id);
 
-// 		const docRef = db.collection("do-item").doc(item.id);
+// 		const docRef = db.collection("todo").doc(item.id);
 		
 // 		docRef.delete().then(function() {
 // 			console.log("Document successfully deleted!");
