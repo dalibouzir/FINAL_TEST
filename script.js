@@ -216,7 +216,7 @@ pTag.appendChild(taskcheck);
 			if(item.user==usee){
 
 				if(item.text==tasktag.innerText){
-					const docRef = db.collection("do-item").doc(item.id);
+					const docRef = db.collection("todo").doc(item.id);
 					docRef.update({
 						text:input
 					
